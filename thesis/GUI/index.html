@@ -17,14 +17,14 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand navbar-logo" href="#">
+    <a class="navbar-brand navbar-logo" href="#" data-scroll-nav="0">
       <img src="images/logo.png" alt="logo" class="logo-1" style="width: 150px; height: auto;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"> <a class="nav-link" href="" data-scroll-nav="0">Home</a> </li>
         <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="1">About</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="2">Features</a> </li>
         <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">Team</a> </li>
         <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4">Test Now</a> </li>
       </ul>
@@ -70,35 +70,35 @@
           <div class="row">
 
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"> <i class="fa fa-life-ring" aria-hidden="true"></i>
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"> <img src="images/svm.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>Support Vector Machine (SVM)</h5>
                 <p style="text-align: justify;">A model that works well with high-dimensional data, finding the optimal boundary between UTI-positive and UTI-negative cases. SVM enhances diagnostic reliability, even with smaller or complex datasets.</p>
               </div>
             </div>
 
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.4s"> <i class="fa fa-mobile" aria-hidden="true"></i>
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">  <img src="images/xgboost.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>XGBoost</h5>
                 <p style="text-align: justify;">A powerful gradient boosting algorithm known for its speed and accuracy, especially in structured data tasks. XGBoost helps detect UTI patterns efficiently with high precision, reducing the risk of misdiagnosis.</p>
               </div>
             </div>
 
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <img src="images/tabnet.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>TabNet</h5>
                 <p style="text-align: justify;">A deep learning model that captures complex patterns in data, ideal for tabular data like medical records. TabNet’s interpretability makes it easier to understand which features influence UTI predictions.</p>
               </div>
             </div>
 
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <img src="images/logreg.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>Logistic Regression</h5>
                 <p style="text-align: justify;">A classic, interpretable model that predicts the likelihood of a UTI. Logistic Regression serves as a solid baseline model, providing a straightforward approach to understanding diagnostic probabilities.</p>
               </div>
             </div>
 
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <img src="images/lgbm.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>LightGBM</h5>
                 <p style="text-align: justify;">A gradient boosting model optimized for speed and efficiency. LightGBM is well-suited for large datasets, making it effective in handling extensive patient data for UTI prediction.</p>
               </div>
@@ -106,14 +106,13 @@
 
             
             <div class="col-md-4">
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <img src="images/ensemble.png" class="img-fluid" style="width: 150px; height: auto;"/>
                 <h5>Ensemble Model</h5>
                 <p style="text-align: justify;">Our ensemble model enhances UTI diagnosis by integrating machine learning techniques like TabNet, XGBoost, SVM, LightGBM, and Logistic Regression. Utilizing a soft voting mechanism, this approach combines the strengths of top-performing models to improve prediction accuracy. Each model undergoes hyperparameter tuning with Optuna, and SHAP analysis identifies key features that drive predictions. This efficient methodology delivers reliable UTI detection, supporting better clinical decision-making and patient outcomes.</p>
               </div>
             </div>
 
           </div>
-          <a href="#" class="about-btn">Learn More</a> </div>
       </div>
     </div>
   </div>
@@ -137,7 +136,6 @@
   </div>
 </section>
 <!-------Video End-------> 
-
 <!-------Features Start------->
 <section class="feature section-padding" data-scroll-index='2'>
   <div class="container">
@@ -146,7 +144,6 @@
         <div class="sectioner-header text-center">
           <h3>Features</h3>
           <span class="line"></span>
-          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
         </div>
         <div class="section-content text-center">
           <div class="row">
@@ -163,14 +160,14 @@
                   <h5>Advanced Predictive Accuracy</h5>
                   <p>Utilizes state-of-the-art algorithms (TabNet, XGBoost, SVM, LightGBM, Logistic Regression) to provide highly accurate UTI predictions, reducing the risk of misdiagnosis.</p>
                 </div>
-                <div class="media-right icon-border"> <span class="fa fa-battery-full" aria-hidden="true"></span> </div>
-              </div>
+                <div class="media-right icon-border"> <span class="fa fa-chart-line" aria-hidden="true"></span> </div>
+              </div>  
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.6s">
                 <div class="media-body text-right media-right-margin">
                   <h5>Ensemble Learning</h5>
                   <p>Combines the strengths of multiple models through a soft voting mechanism, enhancing overall prediction reliability and performance.</p>
                 </div>
-                <div class="media-right icon-border"> <span class="fa fa-wifi" aria-hidden="true"></span> </div>
+                <div class="media-right icon-border"> <span class="fa fa-cogs" aria-hidden="true"></span> </div>
               </div>
             </div>
             <div class="col-md-4 d-none d-md-block d-lg-block">
@@ -178,21 +175,21 @@
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
-                <div class="media-left icon-border media-right-margin"> <span class="fa fa-check-double" aria-hidden="true"></span> </div>
+                <div class="media-left icon-border media-right-margin"> <span class="fa fa-sliders-h" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
                   <h5>Hyperparameter Optimization</h5>
                   <p>Implements Optuna for systematic hyperparameter tuning, ensuring each model operates at its best for improved outcomes.</p>
                 </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.4s">
-                <div class="media-left icon-border media-right-margin"> <span class="fa fa-dollar-sign" aria-hidden="true"></span> </div>
+                <div class="media-left icon-border media-right-margin"> <span class="fa fa-chart-bar" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
                   <h5>Feature Importance Analysis</h5>
                   <p>Employs SHAP analysis to identify and prioritize the most influential features in the dataset, enabling focused predictions and increased interpretability.</p>
                 </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.6s">
-                <div class="media-left icon-border media-right-margin"> <span class="fa fa-hdd" aria-hidden="true"></span> </div>
+                <div class="media-left icon-border media-right-margin"> <span class="fa fa-tachometer-alt" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
                   <h5>Robust Performance Metrics</h5>
                   <p>Assesses model effectiveness using comprehensive metrics, including AUC, precision, recall, accuracy, and F1 score, to ensure reliable diagnostic performance.</p>
@@ -205,6 +202,7 @@
     </div>
   </div>
 </section>
+
 <!-------Features End-------> 
 
 <!-------Team Start------->
@@ -215,30 +213,52 @@
         <div class="sectioner-header text-center">
           <h3>Our Team</h3>
           <span class="line"></span>
-          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
+          <p>University of Santo Tomas - CICS Computer Science Seniors</p>
         </div>
         <div class="section-content text-center">
           <div class="row">
-            <div class="col-md-4">
-              <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="images/user1.jpg" class="img-fluid"/>
-                <h4>Nitu Singh</h4>
-                <p>Marketing Specialist</p>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="team-detail wow bounce" data-wow-delay="0.2s">
+                    <img src="images/roj.jpg" class="img-fluid"/>
+                    <h4>Gorospe, Roj Gian D.</h4>
+                    <p>Researcher</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="team-detail wow bounce" data-wow-delay="0.4s">
+                    <img src="images/roj.jpg" class="img-fluid"/>
+                    <h4>Gorospe, Roj Gian D.</h4>
+                    <p>Researcher</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="team-detail wow bounce" data-wow-delay="0.6s">
+                    <img src="images/roj.jpg" class="img-fluid"/>
+                    <h4>Gorospe, Roj Gian D.</h4>
+                    <p>Researcher</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="team-detail wow bounce" data-wow-delay="0.8s">
+                    <img src="images/roj.jpg" class="img-fluid"/>
+                    <h4>Gorospe, Roj Gian D.</h4>
+                    <p>Researcher</p>
+                  </div>
+                </div>
+                </div>
+              </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="images/user2.jpg" class="img-fluid"/>
-                <h4>Yogesh Singh</h4>
-                <p>CEO & Founder</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="images/user3.jpg" class="img-fluid"/>
-                <h4>Nisha Sharma</h4>
-                <p>Web Developer</p>
-              </div>
-            </div>
-          </div>
+
+
+
+
         </div>
+
+
+
       </div>
     </div>
   </div>
@@ -246,18 +266,18 @@
 
 <!-------Team End-------> 
 
-<!-------Testimonial Start------->
+<!-------Test Now Start------->
 <section class="testimonial section-padding" data-scroll-index='4'>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="sectioner-header text-center white">
-          <h3>Testimonials</h3>
+          <h3>Test Now</h3>
           <span class="line"></span>
-          <p class="white">Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
+          <p class="white">Note: ASDAISDHASHDA</p>
         </div>
     
-      <div class="section-content">
+      <!-- <div class="section-content">
         <div class="row">
           <div class="offset-md-2 col-md-8 col-sm-12">
             <div class="slider">
@@ -276,153 +296,23 @@
             </div>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </div> -->
 
-<!-------Testimonial End-------> 
+      <div class="text-center">
+        <a href="#" class="btn btn-primary btn-lg">Test</a>
+      </div>
 
-<!-------FAQ Start------->
-<section class="faq section-padding prelative" data-scroll-index='5'>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="sectioner-header text-center">
-          <h3>Frequently Asked Questions</h3>
-          <span class="line"></span>
-          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
-        </div>
-        <div class="section-content">
-          <div class="row">
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
-              <h4>Nam tellus felis, dignissim quis dui ?</h4>
-              <p>Suspendisse fermentum placerat enim, at pellentesque augue. Nullam elit est, ultricies et tellus ac, euismod placerat orci. Donec commodo.</p>
-            </div>
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
-              <h4>Mauris scelerisque, dui non faucibus vulputate ?</h4>
-              <p>Sed tempus in neque ac rhoncus. Phasellus vehicula, erat tempor malesuada egestas, mauris tellus malesuada erat, at vestibulum nulla ex et lectus. Nullam elit est, ultricies et tellus ac, euismod placerat orci.</p>
-            </div>
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
-              <h4>Nullam elit est, ultricies et tellus ac ?</h4>
-              <p>Ut vestibulum euismod aliquet. Quisque nec malesuada nibh. Vivamus euismod nunc eu leo faucibus, vel elementum justo posuere. In sed varius nisi. Curabitur id porta ipsum, et vestibulum dui.</p>
-            </div>
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
-              <h4>Suspendisse fermentum placerat enim, at pellentesque augue elit est ?</h4>
-              <p>Vivamus euismod nunc eu leo faucibus, vel elementum justo posuere. In sed varius nisi.</p>
-            </div>
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
-              <h4>Ut vestibulum euismod aliquet. Quisque nec malesuada nibh ?</h4>
-              <p>Suspendisse fermentum placerat enim, at pellentesque augue. Nullam elit est, ultricies et tellus ac, euismod placerat orci. Donec commodo dapibus congue.</p>
-            </div>
-            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
-              <h4>Donec commodo dapibus congue ?</h4>
-              <p>Nullam elit est, ultricies et tellus ac, euismod placerat orci fermentum placerat enim, at pellentesque augue. Nullam elit est, ultricies et tellus ac, euismod placerat orci. Donec commodo dapibus congue.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-------FAQ End-------> 
-
-<!-------Contact Start------->
-<section class="contact section-padding" data-scroll-index='6'>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="sectioner-header text-center">
-          <h3>Contact us</h3>
-          <span class="line"></span>
-          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
-        </div>
-        <div class="section-content">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-              <form id="contact_form" action="">
-                <div class="row">
-                  <div class="col">
-                    <input type="text" id="your_name" class="form-input w-100" name="full-name" placeholder="Full Name" required>
-                  </div>
-                  <div class="col">
-                    <input type="email" id="email" class="form-input w-100" name="email" placeholder="Email" required>
-                  </div>
-                </div>
-                <input type="text" id="subject" class="form-input w-100" name="subject" placeholder="Subject">
-                <textarea class="form-input w-100" id="message" placeholder="Message" name="message"></textarea>
-                <button class="btn-grad w-100 text-uppercase" type="submit" name="button">submit</button>
-              </form>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
-              <div class="contact-info white">
-                <div class="contact-item media"> <i class="fa fa-map-marker-alt media-left media-right-margin"></i>
-                  <div class="media-body">
-                    <p class="text-uppercase">Address</p>
-                    <p class="text-uppercase">New Delhi, India</p>
-                  </div>
-                </div>
-                <div class="contact-item media"> <i class="fa fa-mobile media-left media-right-margin"></i>
-                  <div class="media-body">
-                    <p class="text-uppercase">Phone</p>
-                    <p class="text-uppercase"><a class="text-white" href="tel:+15173977100">009900990099</a> </p>
-                  </div>
-                </div>
-                <div class="contact-item media"> <i class="fa fa-envelope media-left media-right-margin"></i>
-                  <div class="media-body">
-                    <p class="text-uppercase">E-mail</p>
-                    <p class="text-uppercase"><a class="text-white" href="mailto:abcdefg@gmail.com">yogeshsingh.now@gmail.com</a> </p>
-                  </div>
-                </div>
-                <div class="contact-item media"> <i class="fa fa-clock media-left media-right-margin"></i>
-                  <div class="media-body">
-                    <p class="text-uppercase">Working Hours</p>
-                    <p class="text-uppercase">Mon-Fri 9.00 AM to 5.00PM.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-------Contact End-------> 
-
-<!-------Download End------->
-<section class="download section-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="sectioner-header text-center white">
-          <h3>Download Our App</h3>
-          <span class="line"></span>
-          <p class="white">Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="section-content text-center">
-          <ul>
-            <li><a href="#"><img src="images/appstore.png" class="wow fadeInUp" data-wow-delay="0.4s"/></a></li>
-            <li><a href="#"><img src="images/playstore.png" class="wow fadeInUp" data-wow-delay="0.7s"/></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-------Download End------->
-
+<!-------Test Now End-------> 
 <footer class="footer-copy">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <p>2018 &copy; Applight. Website Designed by <a href="http://w3Template.com" target="_blank" rel="dofollow">W3 Template</a></p>
+        <p>2024 Thesis Paper by Aquino, Gayapa, Gorospe, and Santibañez: <a href="https://www.facebook.com/nathanielken.aquino" target="_blank" rel="dofollow">Enhancing UTI Diagnosis Leveraging Reduced Model and Soft Voting</a></p>
       </div>
     </div>
   </div>
