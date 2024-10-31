@@ -25,8 +25,8 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"> <a class="nav-link" href="" data-scroll-nav="0">Home</a> </li>
         <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="1">About</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="2">Team</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">Test Now</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">Team</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4">Test Now</a> </li>
       </ul>
     </div>
   </div>
@@ -64,28 +64,54 @@
         <div class="sectioner-header text-center">
           <h3>About</h3>
           <span class="line"></span>
-          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
+          <p>Our UTI diagnostic framework leverages a range of advanced machine learning models to enhance prediction accuracy and reliability.</p>
         </div>
         <div class="section-content text-center">
           <div class="row">
+
             <div class="col-md-4">
               <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"> <i class="fa fa-life-ring" aria-hidden="true"></i>
-                <h5>Support</h5>
-                <p>Phasellus lobortis justo a magna facilisis, in commodo tellus rutrum. Sed vitae condimentum nulla.</p>
+                <h5>Support Vector Machine (SVM)</h5>
+                <p style="text-align: justify;">A model that works well with high-dimensional data, finding the optimal boundary between UTI-positive and UTI-negative cases. SVM enhances diagnostic reliability, even with smaller or complex datasets.</p>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="icon-box wow fadeInUp" data-wow-delay="0.4s"> <i class="fa fa-mobile" aria-hidden="true"></i>
-                <h5>Cross Platform</h5>
-                <p>Phasellus lobortis justo a magna facilisis, in commodo tellus rutrum. Sed vitae condimentum nulla.</p>
+                <h5>XGBoost</h5>
+                <p style="text-align: justify;">A powerful gradient boosting algorithm known for its speed and accuracy, especially in structured data tasks. XGBoost helps detect UTI patterns efficiently with high precision, reducing the risk of misdiagnosis.</p>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
-                <h5>Fast</h5>
-                <p>Phasellus lobortis justo a magna facilisis, in commodo tellus rutrum. Sed vitae condimentum nulla.</p>
+                <h5>TabNet</h5>
+                <p style="text-align: justify;">A deep learning model that captures complex patterns in data, ideal for tabular data like medical records. TabNet’s interpretability makes it easier to understand which features influence UTI predictions.</p>
               </div>
             </div>
+
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+                <h5>Logistic Regression</h5>
+                <p style="text-align: justify;">A classic, interpretable model that predicts the likelihood of a UTI. Logistic Regression serves as a solid baseline model, providing a straightforward approach to understanding diagnostic probabilities.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+                <h5>LightGBM</h5>
+                <p style="text-align: justify;">A gradient boosting model optimized for speed and efficiency. LightGBM is well-suited for large datasets, making it effective in handling extensive patient data for UTI prediction.</p>
+              </div>
+            </div>
+
+            
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="fa fa-bolt" aria-hidden="true"></i>
+                <h5>Ensemble Model</h5>
+                <p style="text-align: justify;">Our ensemble model enhances UTI diagnosis by integrating machine learning techniques like TabNet, XGBoost, SVM, LightGBM, and Logistic Regression. Utilizing a soft voting mechanism, this approach combines the strengths of top-performing models to improve prediction accuracy. Each model undergoes hyperparameter tuning with Optuna, and SHAP analysis identifies key features that drive predictions. This efficient methodology delivers reliable UTI detection, supporting better clinical decision-making and patient outcomes.</p>
+              </div>
+            </div>
+
           </div>
           <a href="#" class="about-btn">Learn More</a> </div>
       </div>
@@ -103,7 +129,7 @@
       <div class="video-popup">
         <div class="video-src">
           <div class="iframe-src">
-            <iframe src="https://www.youtube.com/embed/Ku52zNnft8k?rel=0&amp;showinfo=0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/gGS7tddt1XA?rel=0&amp;showinfo=0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -127,22 +153,22 @@
             <div class="col-md-4 col-sm-12">
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
                 <div class="media-body text-right media-right-margin">
-                  <h5>Fast Processing</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Real-time Diagnostics</h5>
+                  <p>Capable of providing quick and accurate predictions to support timely clinical decisions, improving patient management and care.</p>
                 </div>
                 <div class="media-right icon-border"> <span class="fa fa-bolt" aria-hidden="true"></span> </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.4s">
                 <div class="media-body text-right media-right-margin">
-                  <h5>Low Power Consuming</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Advanced Predictive Accuracy</h5>
+                  <p>Utilizes state-of-the-art algorithms (TabNet, XGBoost, SVM, LightGBM, Logistic Regression) to provide highly accurate UTI predictions, reducing the risk of misdiagnosis.</p>
                 </div>
                 <div class="media-right icon-border"> <span class="fa fa-battery-full" aria-hidden="true"></span> </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.6s">
                 <div class="media-body text-right media-right-margin">
-                  <h5>Wifi Compatibility</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Ensemble Learning</h5>
+                  <p>Combines the strengths of multiple models through a soft voting mechanism, enhancing overall prediction reliability and performance.</p>
                 </div>
                 <div class="media-right icon-border"> <span class="fa fa-wifi" aria-hidden="true"></span> </div>
               </div>
@@ -154,22 +180,22 @@
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
                 <div class="media-left icon-border media-right-margin"> <span class="fa fa-check-double" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
-                  <h5>Regular Updates</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Hyperparameter Optimization</h5>
+                  <p>Implements Optuna for systematic hyperparameter tuning, ensuring each model operates at its best for improved outcomes.</p>
                 </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.4s">
                 <div class="media-left icon-border media-right-margin"> <span class="fa fa-dollar-sign" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
-                  <h5>Save Money</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Feature Importance Analysis</h5>
+                  <p>Employs SHAP analysis to identify and prioritize the most influential features in the dataset, enabling focused predictions and increased interpretability.</p>
                 </div>
               </div>
               <div class="media single-feature wow fadeInUp" data-wow-delay="0.6s">
                 <div class="media-left icon-border media-right-margin"> <span class="fa fa-hdd" aria-hidden="true"></span> </div>
                 <div class="media-body text-left">
-                  <h5>Unlimited Storage</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididugnt ut labore</p>
+                  <h5>Robust Performance Metrics</h5>
+                  <p>Assesses model effectiveness using comprehensive metrics, including AUC, precision, recall, accuracy, and F1 score, to ensure reliable diagnostic performance.</p>
                 </div>
               </div>
             </div>
