@@ -177,7 +177,7 @@ h6 {
 	font-size: 17px;
 }
 .section-content {
-	margin-top: 80px;
+	margin-top: 100px;
 }
 .icon-box {
 	margin-bottom:50px;
@@ -326,6 +326,7 @@ h6 {
 	background: linear-gradient(to left, #139091, #56ab83);
 	padding:100px 0px;
 	position:relative;
+	margin-bottom: 50px;
 }
 .testimonial::before {
 	content: "";
@@ -335,7 +336,7 @@ h6 {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: url(images/pattern.png);
+	background: url(images/pattern.png	);
 }
 .bx-prev {
 	left: -90px !important;
@@ -352,8 +353,15 @@ h6 {
 .bx-wrapper {
 	border: none !important;
 	background: rgba(255, 255, 255, 0.81) !important;
-	border-radius: 5px !important;
-	box-shadow:none !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	width: 500px; /* Adjust the width as needed */
+	height: 250px; /* Adjust the height as needed */
+	margin: 0 auto; /* Center the element */
+	padding-left: 20px;
+	padding-bottom: 50px;
+	padding-top: 10px;
+	
 }
 .slider-item {
 	padding:20px;
@@ -363,6 +371,7 @@ h6 {
 	border-radius: 50%;
 	width: 100%;
 	height: auto;
+	margin-top: 20px;
 }
 .test-img {
 	float: left;
@@ -380,6 +389,7 @@ h6 {
 	font-size: 1.125em;
 	line-height: 1.25;
 }
+
 .slider .title span {
 	display: block;
 	font-size: 1.5em;
@@ -601,4 +611,5 @@ h3 {
 .footer-copy p {
 	font-size: 10px;
 }
+
 }
