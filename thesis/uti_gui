@@ -1,0 +1,208 @@
+import numpy as np
+import pandas as pd
+import joblib
+import tkinter as tk
+from tkinter import messagebox
+from sklearn.preprocessing import StandardScaler
+import os
+
+# Define the path to your thesis folder
+thesis_folder = r"C:\Users\Luke Santibanez\Documents\GitHub\UTI_diagnosis_model\thesis"
+
+# Load models with the full path
+trained_xgb = joblib.load(os.path.join(thesis_folder, "trained_xgb_model.pkl"))
+trained_svm = joblib.load(os.path.join(thesis_folder, "trained_svm_model.pkl"))
+trained_lgbm = joblib.load(os.path.join(thesis_folder, "trained_lgbm_model.pkl"))
+
+def ensemble_predict(X_test):
+    weight_xgb = 0.33
+    weight_lgbm = 0.33
+    weight_svc = 0.33
+
+    # Make predictions with each model
+    xgb_predicted_proba = trained_xgb.predict_proba(X_test)
+    lgbm_predicted_proba = trained_lgbm.predict_proba(X_test)
+    svm_predicted_proba = trained_svm.predict_proba(X_test)
+
+    # Calculate the weighted average of predictions
+    ensemble_proba = (
+        weight_lgbm * lgbm_predicted_proba +
+        weight_xgb * xgb_predicted_proba +
+        weight_svc * svm_predicted_proba
+    )
+
+    # Determine the class with the highest probability
+    ensemble_prediction = np.argmax(ensemble_proba, axis=1)
+    return ensemble_prediction, ensemble_proba
+
+EXPECTED_COLUMNS = [
+    'Age', 'Spec Gravity', 'pH Level', 'Sex', 'Ethnicity', 'Clarity',
+    'Color', 'Transparency', 'Leukocytes', 'Nitrite', 'Protein', 'Glucose',
+    'Ketones', 'Urobilinogen', 'Bilirubin', 'Blood', 'Bacteria',
+    'Epithelial Cells', 'RBC', 'WBC', 'Mucus Threads', 'Amorphous Urate/Phosphate',
+    'Marital Status_MARRIED', 'FEMALE', 'FILIPINO'
+]
+
+# Modify the predict function
+def predict():
+    try:
+        # Collect data from the GUI
+        input_data = {
+            'Age': float(age_entry.get()),
+            'Spec Gravity': float(spec_gravity_entry.get()),
+            'pH Level': float(ph_level_entry.get()),
+            'Sex': sex_var.get(),
+            'Ethnicity': ethnicity_var.get(),
+            'Marital Status': marital_status_var.get(),
+            'Clarity': clarity_var.get(),
+            'Color': color_var.get(),
+            'Transparency': transparency_var.get(),
+            'Leukocytes': leukocytes_var.get(),
+            'Nitrite': nitrite_var.get(),
+            'Protein': protein_var.get(),
+            'Glucose': glucose_var.get(),
+            'Ketones': ketones_var.get(),
+            'Urobilinogen': urobilinogen_var.get(),
+            'Bilirubin': bilirubin_var.get(),
+            'Blood': blood_var.get(),
+            'Bacteria': bacteria_var.get(),
+            'Epithelial Cells': epithelial_cells_var.get(),
+            'RBC': rbc_var.get(),
+            'WBC': wbc_var.get(),
+            'Mucus Threads': mucus_threads_var.get(),
+            'Amorphous Urate/Phosphate': amorphous_var.get(),
+        }
+        
+        # Convert input data to DataFrame
+        input_df = pd.DataFrame(input_data, index=[0])
+
+        # Mapping for binary columns
+        binary_mappings = {
+            'Sex': {'MALE': 0, 'FEMALE': 1},
+            'Ethnicity': {'FILIPINO': 1, 'OTHER': 0},
+            'Clarity': {'INCREASED': 1, 'DECREASED': 0},
+            'Urobilinogen': {'NORMAL': 0, 'ABNORMAL': 1}
+        }
+
+        # Apply binary mappings
+        for col, mapping in binary_mappings.items():
+            input_df[col] = input_df[col].map(mapping)
+
+        # Ordinal mappings for ordered categories
+        ordinal_mappings = {
+            'Color': ['CLEAR', 'PALE YELLOW', 'STRAW', 'LIGHT YELLOW', 'YELLOW', 'DARK YELLOW', 'AMBER', 'BROWN', 'RED'],
+            'Transparency': ['CLEAR', 'HAZY', 'CLOUDY', 'MILKY', 'TURBID'],
+            'Nitrite': ['NEGATIVE', 'TRACE', 'POSITIVE'],
+            'Protein': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Leukocytes': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Glucose': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Ketones': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Bilirubin': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Blood': ['NEGATIVE', 'TRACE', '1+', '2+', '3+', '4+'],
+            'Bacteria': ['RARE', 'FEW', 'MODERATE', 'MANY', 'TNTC'],
+            'Epithelial Cells': ['RARE', 'FEW', 'MODERATE', 'MANY', 'TNTC'],
+            'RBC': ['0-2', '5-10', '10-20', '20-30', 'TNTC'],
+            'WBC': ['0-2', '5-10', '10-20', '20-30', 'TNTC'],
+            'Mucus Threads': ['RARE', 'FEW', 'MODERATE', 'MANY', 'TNTC'],
+            'Amorphous Urate/Phosphate': ['RARE', 'FEW', 'MODERATE', 'MANY', 'TNTC']
+        }
+
+        # Convert ordinal categorical values to numerical codes
+        for col, order in ordinal_mappings.items():
+            input_df[col] = pd.Categorical(input_df[col], categories=order, ordered=True).codes
+
+        # One-hot encoding for nominal categorical columns (e.g., 'Marital Status')
+        input_df = pd.get_dummies(input_df, columns=['Marital Status'], drop_first=True)
+
+        # Reindex to ensure all expected columns are present, filling missing columns with 0
+        input_df = input_df.reindex(columns=EXPECTED_COLUMNS, fill_value=0)
+
+        # Make prediction
+        prediction, probabilities = ensemble_predict(input_df)
+
+        # Display the result in a messagebox
+        result_text = f"Predicted Class: {prediction[0]}\nPrediction Probabilities: {probabilities[0]}"
+        messagebox.showinfo("Prediction Result", result_text)
+
+    except Exception as e:
+        messagebox.showerror("Error", str(e))
+
+# Set up the Tkinter GUI
+root = tk.Tk()
+root.title("UTI Prediction GUI")
+
+# Age input
+tk.Label(root, text="Age").grid(row=0, column=0)
+age_entry = tk.Entry(root)
+age_entry.grid(row=0, column=1)
+
+# Spec Gravity input
+tk.Label(root, text="Spec Gravity").grid(row=1, column=0)
+spec_gravity_entry = tk.Entry(root)
+spec_gravity_entry.grid(row=1, column=1)
+
+# pH Level input
+tk.Label(root, text="pH Level").grid(row=2, column=0)
+ph_level_entry = tk.Entry(root)
+ph_level_entry.grid(row=2, column=1)
+
+# Dropdowns for categorical variables based on the provided mappings
+sex_var = tk.StringVar()
+ethnicity_var = tk.StringVar()
+marital_status_var = tk.StringVar()
+clarity_var = tk.StringVar()
+color_var = tk.StringVar()
+transparency_var = tk.StringVar()
+leukocytes_var = tk.StringVar()
+nitrite_var = tk.StringVar()
+protein_var = tk.StringVar()
+glucose_var = tk.StringVar()
+ketones_var = tk.StringVar()
+urobilinogen_var = tk.StringVar()
+bilirubin_var = tk.StringVar()
+blood_var = tk.StringVar()
+bacteria_var = tk.StringVar()
+epithelial_cells_var = tk.StringVar()
+rbc_var = tk.StringVar()
+wbc_var = tk.StringVar()
+mucus_threads_var = tk.StringVar()
+amorphous_var = tk.StringVar()
+
+# Add dropdown menus for categorical variables with updated options
+dropdowns = [
+    ("Sex", sex_var, ["MALE", "FEMALE"]),
+    ("Ethnicity", ethnicity_var, ["FILIPINO", "OTHER"]),
+    ("Marital Status", marital_status_var, ["SINGLE", "MARRIED"]),
+    ("Clarity", clarity_var, ["INCREASED", "DECREASED"]),
+    ("Color", color_var, ["CLEAR", "PALE YELLOW", "STRAW", "LIGHT YELLOW", "YELLOW", "DARK YELLOW", "AMBER", "BROWN", "RED"]),
+    ("Transparency", transparency_var, ["CLEAR", "HAZY", "CLOUDY", "MILKY", "TURBID"]),
+    ("Leukocytes", leukocytes_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Nitrite", nitrite_var, ["NEGATIVE", "TRACE", "POSITIVE"]),
+    ("Protein", protein_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Glucose", glucose_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Ketones", ketones_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Urobilinogen", urobilinogen_var, ["NORMAL", "ABNORMAL"]),
+    ("Bilirubin", bilirubin_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Blood", blood_var, ["NEGATIVE", "TRACE", "1+", "2+", "3+", "4+"]),
+    ("Bacteria", bacteria_var, ["RARE", "FEW", "MODERATE", "MANY", "TNTC"]),
+    ("Epithelial Cells", epithelial_cells_var, ["RARE", "FEW", "MODERATE", "MANY", "TNTC"]),
+    ("RBC", rbc_var, ["0-2", "5-10", "10-20", "20-30", "TNTC"]),
+    ("WBC", wbc_var, ["0-2", "5-10", "10-20", "20-30", "TNTC"]),
+    ("Mucus Threads", mucus_threads_var, ["RARE", "FEW", "MODERATE", "MANY", "TNTC"]),
+    ("Amorphous Urate/Phosphate", amorphous_var, ["RARE", "FEW", "MODERATE", "MANY", "TNTC"]),
+]
+
+# Place dropdowns in the GUI
+row_idx = 3
+for label, var, options in dropdowns:
+    tk.Label(root, text=label).grid(row=row_idx, column=0)
+    dropdown = tk.OptionMenu(root, var, *options)
+    dropdown.grid(row=row_idx, column=1)
+    row_idx += 1
+
+# Predict button
+predict_button = tk.Button(root, text="Predict", command=predict)
+predict_button.grid(row=row_idx, columnspan=2)
+
+# Run the GUI loop
+root.mainloop()
