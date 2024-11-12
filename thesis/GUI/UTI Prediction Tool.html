@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTI Prediction Tool</title>
+</head>
+<body>
+    <header>
+        <img src="images/logoreverse.png" alt="Logo" class="logo">
+        <a href="index.html" class="home">HOME</a>
+    </header>
+    
+    <div class="container">
+		
+        <!-- First Block: Title and Model Selection -->
+        <div class="block">
+            <h2>UTI Prediction Tool</h2>
+            <label for="model">Select Model:</label>
+            <select id="model">
+                <option value="svm">Support Vector Machine</option>\
+                <option value="logreg">Logistic Regression</option>
+                <option value="xgb">XGBoost</option>
+                <option value="tabnet">TabNet</option>
+                <option value="lgbm">LightGBM</option>
+                <option value="ensemble">Ensemble Model</option>
+            </select>
+        </div>
+		
+        <!-- Third Block: Personal Information -->    
+		<div class="persoblock">
+			<h4>Patient Details</h4>
+			<label for="age">Age:</label>
+			<input type="number" id="age" name="age" min="1" step="1" placeholder="Enter Age" required />
+			<label for="sex">Sex:</label>
+            <select id="sex">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+			<label for="ethnicity">Ethnicity:</label>
+    		<input type="text" id="ethnicity" name="ethnicity" placeholder="Enter Ethnicity" required />
+
+			<label for="marital">Marital Status:</label>
+            <select id="marital">
+                <option value="">Select</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+				<option value="widowed">Widowed</option>
+            </select>
+		</div>
+		
+		<!-- Fourth Block: Macroscopic Information -->
+		<div class="macroblock">
+			<h4>Macroscopic</h4>
+			<label for="clarity">Clarity:</label>
+            <select id="clarity">
+                <option value="">Select</option>
+                <option value="increase">Increase</option>
+                <option value="decrease">Decrease</option>
+			</select>
+			<label for="color">Color:</label>
+            <select id="color">
+                <option value="">Select</option>
+                <option value="yellow">Yellow</option>
+                <option value="light_yellow">Light Yellow</option>
+				<option value="amber">Pale Yellow</option>
+				<option value="dark_amber">Dark Yellow</option>
+                <option value="dark_amber">Amber</option>
+                <option value="dark_amber">Brown</option>
+                <option value="dark_amber">Red</option>
+                <option value="dark_amber">Straw</option>
+                <option value="dark_amber">Clear</option>
+			</select>
+			<label for="transparency">Transparency:</label>
+			<select id="transparency">
+				<option value="">Select</option>
+				<option value="clear">Hazy</option>
+				<option value="cloudy">Cloudy</option>
+				<option value="turbid">Turbid</option>
+				<option value="opaque">Clear</option>
+                <option value="dark_amber">Red</option>
+				<option value="transparent">Milky</option>
+			</select>
+		</div>
+		
+		<!-- Fifth Block: Chemical Information -->
+		<div class="chemblock">
+			<h4>Chemical</h4>
+			<label for="specifgrav">Specific Gravity:</label>
+            <select id="specifgrav">
+                <option value="">Select</option>
+                <option value="1.005">1.005</option>
+                <option value="1.010">1.010</option>
+                <option value="1.015">1.015</option>
+                <option value="1.020">1.020</option>
+                <option value="1.025">1.025</option>
+                <option value="1.030">1.030</option>
+            </select>
+			<label for="ph">pH level:</label>
+            <select id="ph">
+                <option value="">Select</option>
+                <option value="5.0">5.0</option>
+                <option value="5.5">5.5</option>
+                <option value="6.0">6.0</option>
+                <option value="6.5">6.5</option>
+                <option value="7.0">7.0</option>
+                <option value="7.5">7.5</option>
+                <option value="8.0">8.0</option>
+            </select>
+            <label for="leukocytes">Leukocytes:</label>
+            <select id="leukocytes">
+                <option value="">Select</option>
+                <option value="positive">Negative</option>
+                <option value="negative">Trace</option>
+                <option value="negative">1+</option>
+                <option value="negative">2+</option>
+                <option value="negative">3+</option>
+            </select>
+			<label for="nitrite">Nitrite:</label>
+			<select id="nitrite">
+				<option value="">Select</option>
+				<option value="negative">Negative</option>
+				<option value="positive">Positive</option>
+                <option value="negative">Trace</option>
+                <option value="negative">1+</option>
+                <option value="negative">2+</option>
+                <option value="negative">3+</option>
+			</select>
+            <label for="protein">Protein:</label>
+            <select id="protein">
+                <option value="">Select</option>
+                <option value="trace">Trace</option>
+                <option value="small">Small</option>
+                <option value="moderate">Moderate</option>
+                <option value="large">Large</option>
+            </select>
+			<label for="glucose">Glucose:</label>
+            <select id="glucose">
+                <option value="">Select</option>
+                <option value="negative">Negative</option>
+                <option value="trace">Trace</option>
+                <option value="small">Small</option>
+                <option value="moderate">Moderate</option>
+                <option value="large">Large</option>
+            </select>
+			<label for="ketones">Ketones:</label>
+            <select id="ketones">
+                <option value="">Select</option>
+                <option value="negative">Negative</option>
+                <option value="trace">Trace</option>
+                <option value="small">Small</option>
+                <option value="moderate">Moderate</option>
+                <option value="large">Large</option>
+            </select>
+			<label for="urobilinogen">Urobilinogen:</label>
+            <select id="urobilinogen">
+                <option value="">Select</option>
+                <option value="normal">Normal</option>
+                <option value="increased">Increased</option>
+            </select>
+			<label for="bilirubin">Bilirubin:</label>
+            <select id="bilirubin">
+                <option value="">Select</option>
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
+            </select>
+            <label for="blood">Blood:</label>
+            <select id="blood">
+                <option value="">Select</option>
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
+            </select>
+		</div>
+		
+		<!-- Sixth Block: Microscopic Information -->
+		<div class="microblock">
+			<h4>Microscopic</h4>
+			<label for="bacteria">Bacteria:</label>
+			<select id="bacteria">
+				<option value="">Select</option>
+				<option value="negative">Negative</option>
+				<option value="trace">Trace</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+			<label for="epicells">Epithelial Cells:</label>
+			<select id="epicells">
+				<option value="">Select</option>
+				<option value="negative">Negative</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+			<label for="rbc">Red Blood Cells (RBC):</label>
+			<select id="rbc">
+				<option value="">Select</option>
+				<option value="negative">Negative</option>
+				<option value="trace">Trace</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+			<label for="wbc">White Blood Cells (WBC):</label>
+			<select id="wbc">
+				<option value="">Select</option>
+				<option value="negative">Negative</option>
+				<option value="trace">Trace</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+			<label for="mucous">Mucous Threads:</label>
+			<select id="mucous">
+				<option value="">Select</option>
+				<option value="none">None</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+			<label for="amorphura">Amorphous Urates:</label>
+			<select id="amorphura">
+				<option value="">Select</option>
+				<option value="none">None</option>
+				<option value="few">Few</option>
+				<option value="moderate">Moderate</option>
+				<option value="many">Many</option>
+			</select>
+		</div>
+
+        <!-- Predict Button Container -->
+        <div class="predict-btn-container">
+            <button class="predict-btn">Predict</button>
+        </div>
+    </div>
+
+    <footer>
+        2024 Thesis Paper by Aquino, Gayapa, Gorospe, and Santibañez: <a href="https://youtu.be/dQw4w9WgXcQ?si=WDb9jDeZWv66db9M" target="_blank" rel="dofollow" class="paper">Enhancing UTI Diagnosis Leveraging Reduced Model and Soft Voting</a>
+    </footer>
+</body>
+</html>
