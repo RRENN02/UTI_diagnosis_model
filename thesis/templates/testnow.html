@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-    
+
     <main>
         <div class="form-container">
             <h1>Test: UTI Prediction Tool</h1>
             <br>
             <h3><b>PERSONAL INFORMATION</b></h3>
-            <form action="/process" method="post">
+            <form action="/process" method="post" id="info">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="age">Age:</label>
@@ -48,7 +50,7 @@
                 </div>
                 <br>
                 <h3><b>MACROSCOPIC</b></h3>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="clarity">Clarity:</label>
@@ -184,117 +186,142 @@
                     <div class="form-group">
                         <label for="bilirubin">Bilirubin:</label>
                         <select id="bilirubin" name="bilirubin" required>
-                          <option value="" disabled selected>Select</option>
-                          <option value="negative">Negative</option> 
-                          <option value="trace">Trace</option>        
-                          <option value="1+">1+</option>
-                          <option value="2+">2+</option>
-                          <option value="3+">3+</option>
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="blood">Blood:</label>
-                          <select id="blood" name="blood" required>
-                          <option value="" disabled selected>Select</option>
-                          <option value="negative">Negative</option>          
-                          <option value="3+">3+</option>
-                          <option value="2+">2+</option>
-                          <option value="1+">1+</option>
-                         <option value="trace">Trace</option>
+                        <select id="blood" name="blood" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="3+">3+</option>
+                            <option value="2+">2+</option>
+                            <option value="1+">1+</option>
+                            <option value="trace">Trace</option>
                         </select>
-                    </div>  
+                    </div>
                 </div>
-                   
-                    <br>
-                    <h3><b>MICROSCOPIC<b></h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="bacteria">Bacteria:</label>
-                            <select id="bacteria" name="bacteria" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="few">Few</option>
-                                <option value="rare">Rare</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="many">Many</option>
-                                <option value="TNTC">TNTC</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="epithelial-cells">Epithelial Cells:</label>
-                            <select id="epithelial-cells" name="epithelial-cells" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="few">Few</option>
-                                <option value="rare">Rare</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="many">Many</option>
-                                <option value="TNTC">TNTC</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="mucus-threads">Mucus Threads:</label>
-                              <select id="mucus-threads" name="mucus-threads" required>
-                                <option value="" disabled selected>Select</option>
-                                 <option value="few">Few</option>
-                                  <option value="rare">Rare</option>
-                                   <option value="moderate">Moderate</option>
-                                    <option value="many">Many</option>
-                                     <option value="TNTC">TNTC</option>
-                                  </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="amorphous-urate">Amorphous Urate:</label>
-                            <select id="amorphous-urate" name="amorphous-urate" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="few">Few</option>
-                                <option value="rare">Rare</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="many">Many</option>
-                                <option value="TNTC">TNTC</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rbc">RBC:</label>
-                              <select id="rbc" name="rbc" required>
-                                <option value="" disabled selected>Select</option>
-                                 <option value="0-2">0-2</option>
-                                  <option value="5-10">5-10</option>
-                                   <option value="10-20">10-20</option>
-                                    <option value="20-30">20-30</option>
-                                     <option value="TNTC">TNTC</option>
-                                  </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="wbc">WBC:</label>
-                              <select id="wbc" name="wbc" required>
 
-                                <option value="" disabled selected>Select</option>
-
-                                 <option value="0-2">0-2</option>
-
-                                  <option value="5-10">5-10</option>
-
-                                   <option value="10-20">10-20</option>
-
-                                    <option value="20-30">20-30</option>
-
-                                     <option value="TNTC">TNTC</option>
-
-                                  </select>
-                        </div>
-                    </div>         
-                    <div class="submit-container">
-                        <button type="submit" class="submit-button">Submit</button>
-                    </div>
-                    
-                    </div> 
                 <br>
+                <h3><b>MICROSCOPIC<b></h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bacteria">Bacteria:</label>
+                        <select id="bacteria" name="bacteria" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="few">Few</option>
+                            <option value="rare">Rare</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="many">Many</option>
+                            <option value="TNTC">TNTC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="epithelial-cells">Epithelial Cells:</label>
+                        <select id="epithelial-cells" name="epithelial-cells" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="few">Few</option>
+                            <option value="rare">Rare</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="many">Many</option>
+                            <option value="TNTC">TNTC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mucus-threads">Mucus Threads:</label>
+                        <select id="mucus-threads" name="mucus-threads" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="few">Few</option>
+                            <option value="rare">Rare</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="many">Many</option>
+                            <option value="TNTC">TNTC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amorphous-urate">Amorphous Urate:</label>
+                        <select id="amorphous-urate" name="amorphous-urate" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="few">Few</option>
+                            <option value="rare">Rare</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="many">Many</option>
+                            <option value="TNTC">TNTC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rbc">RBC:</label>
+                        <select id="rbc" name="rbc" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="0-2">0-2</option>
+                            <option value="5-10">5-10</option>
+                            <option value="10-20">10-20</option>
+                            <option value="20-30">20-30</option>
+                            <option value="TNTC">TNTC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wbc">WBC:</label>
+                        <select id="wbc" name="wbc" required>
 
-        
-            </form>
+                            <option value="" disabled selected>Select</option>
+
+                            <option value="0-2">0-2</option>
+
+                            <option value="5-10">5-10</option>
+
+                            <option value="10-20">10-20</option>
+
+                            <option value="20-30">20-30</option>
+
+                            <option value="TNTC">TNTC</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="submit-container">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+
         </div>
-        <p>{{ response }}</p>
-    </main>
+        <br>
+
+
+        </form>
+        <!-- Popup structure -->
+        <div class="popup-overlay" id="popup">
+            <div class="popup-content">
+            <p>Prediction: {{ response }}</p>
+            <button class="close-btn" id="closePopup">Close</button>
+            </div>
+        </div>
+        <!-- <p></p> -->
+        </main>
+
+        <script>
+        // Get elements
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('closePopup');
+
+        // Show popup if response is present
+        document.addEventListener('DOMContentLoaded', function () {
+            if ("{{ response }}") {
+            popup.style.display = 'flex'; // Show popup
+            }
+        });
+
+        // Close popup
+        closePopup.addEventListener('click', function () {
+            popup.style.display = 'none'; // Hide popup
+        });
+        </script>
 </body>
+
 </html>
