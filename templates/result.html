@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTI Prediction Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f7fa;
+            color: #333;
+        }
+        .result-container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        .result-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #1a5276;
+        }
+        .result-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #566573;
+        }
+        .predicted-class {
+            font-size: 26px;
+            font-weight: 700;
+            color: #148f77;
+            margin-bottom: 20px;
+        }
+        .probability-details {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .probability-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .probability-details th, .probability-details td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+        .probability-details th {
+            background-color: #d6eaf8;
+            font-weight: 700;
+        }
+        .probability-details tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .back-button {
+            margin-top: 30px;
+            text-decoration: none;
+            background-color: #1abc9c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1 class="result-title">UTI Prediction Result</h1>
+        <p class="result-description">Thank you for providing the necessary details. Based on the data entered, our ensemble prediction model has provided the following result:</p>
+        
+        <div class="predicted-class">Predicted Class: {% if predicted_class == 0 %}NEGATIVE{% elif predicted_class == 1 %}<span style="color: red;">UTI</span>{% else %}Class {{ predicted_class }}{% endif %}</div>
+        <div class="probability-details">
+            <h3>Prediction Probabilities:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Probability (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(prediction_probabilities|length) %}
+                    <tr>
+                        <td>{% if i == 0 %}NEGATIVE{% elif i == 1 %}UTI{% else %}Class {{ i }}{% endif %}</td>
+                        <td>{{ (prediction_probabilities[i] * 100) | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <a href="/" class="back-button">Back to Form</a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urinalyze: UTI Prediction Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    
+    <main>
+        <div class="form-container">
+            <h1>Urinalyze: UTI Prediction Tool</h1>
+            <form action="/process" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="model">Select Model:</label>
+                        <select id="model" name="model" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="fullreduced">Full Reduced Ensemble Model</option>
+                            <option value="top3">Top 3 Overall Ensemble Model</option>
+                        </select>
+                    </div>
+                </div>
+            <br>
+            <h3><b>PERSONAL INFORMATION</b></h3>
+            
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Sex:</label>
+                        <select id="sex" name="sex" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="marital-status">Marital Status:</label>
+                        <select id="marital-status" name="marital-status" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ethnicity">Ethnicity:</label>
+                        <select id="ethnicity" name="ethnicity" >
+                            <option value="FILIPINO">Filipino</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <h3><b>MACROSCOPIC</b></h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clarity">Clarity:</label>
+                        <select id="clarity" name="clarity" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="decrease">Decrease</option>
+                            <option value="increase">Increase</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <select id="color" name="color" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="pale-yellow">Pale Yellow</option>
+                            <option value="light-yellow">Light Yellow</option>
+                            <option value="dark-yellow">Dark Yellow</option>
+                            <option value="clear">Clear</option>
+                            <option value="red">Red</option>
+                            <option value="straw">Straw</option>
+                            <option value="amber">Amber</option>
+                            <option value="brown">Brown</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transparency">Transparency:</label>
+                        <select id="transparency" name="transparency" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="hazy">Hazy</option>
+                            <option value="turbid">Turbid</option>
+                            <option value="cloudy">Cloudy</option>
+                            <option value="milky">Milky</option>
+                            <option value="red">Red</option>
+                            <option value="clear">Clear</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <h3><b>CHEMICAL<b></h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="specific-gravity">Specific Gravity:</label>
+                        <select id="specific-gravity" name="specific-gravity" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="1.005">1.005</option>
+                            <option value="1.01">1.01</option>
+                            <option value="1.015">1.015</option>
+                            <option value="1.02">1.02</option>
+                            <option value="1.025">1.025</option>
+                            <option value="1.03">1.03</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph-level">pH Level:</label>
+                        <select id="ph-level" name="ph-level" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="5.0">5.0</option>
+                            <option value="5.5">5.5</option>
+                            <option value="6.0">6.0</option>
+                            <option value="6.5">6.5</option>
+                            <option value="7.0">7.0</option>
+                            <option value="7.5">7.5</option>
+                            <option value="8.0">8.0</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="leukocytes">Leukocytes:</label>
+                        <select id="leukocytes" name="leukocytes" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nitrite">Nitrite:</label>
+                        <select id="nitrite" name="nitrite" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="positive">Positive</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="protein">Protein:</label>
+                        <select id="protein" name="protein" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
+                            <option value="4+">4+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="glucose">Glucose:</label>
+                        <select id="glucose" name="glucose" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
+                            <option value="4+">4+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ketones">Ketones:</label>
+                        <select id="ketones" name="ketones" >
+                            <option value="" disabled selected>Select</option>
+                            <option value="negative">Negative</option>
+                            <option value="trace">Trace</option>
+                            <option value="1+">1+</option>
+                            <option value="2+">2+</option>
+                            <option value="3+">3+</option>
+                            <option value="4+">4+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urobilinogen">Urobilinogen:</label>
+                        <input type="text" id="urobilinogen" name="urobilinogen">
+                    </div>
+                    <div class="form-group">
+                        <label for="bilirubin">Bilirubin:</label>
+                        <select id="bilirubin" name="bilirubin" >
+                          <option value="" disabled selected>Select</option>
+                          <option value="negative">Negative</option> 
+                          <option value="trace">Trace</option>        
+                          <option value="1+">1+</option>
+                          <option value="2+">2+</option>
+                          <option value="3+">3+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blood">Blood:</label>
+                          <select id="blood" name="blood" >
+                          <option value="" disabled selected>Select</option>
+                          <option value="negative">Negative</option>          
+                          <option value="3+">3+</option>
+                          <option value="2+">2+</option>
+                          <option value="1+">1+</option>
+                         <option value="trace">Trace</option>
+                        </select>
+                    </div>  
+                </div>
+                   
+                    <br>
+                    <h3><b>MICROSCOPIC<b></h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bacteria">Bacteria:</label>
+                            <select id="bacteria" name="bacteria" >
+                                <option value="" disabled selected>Select</option>
+                                <option value="few">Few</option>
+                                <option value="rare">Rare</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="many">Many</option>
+                                <option value="TNTC">TNTC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="epithelial-cells">Epithelial Cells:</label>
+                            <select id="epithelial-cells" name="epithelial-cells" >
+                                <option value="" disabled selected>Select</option>
+                                <option value="few">Few</option>
+                                <option value="rare">Rare</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="many">Many</option>
+                                <option value="TNTC">TNTC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mucus-threads">Mucus Threads:</label>
+                              <select id="mucus-threads" name="mucus-threads" >
+                                <option value="" disabled selected>Select</option>
+                                 <option value="few">Few</option>
+                                  <option value="rare">Rare</option>
+                                   <option value="moderate">Moderate</option>
+                                    <option value="many">Many</option>
+                                     <option value="TNTC">TNTC</option>
+                                  </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amorphous-urate">Amorphous Urate:</label>
+                            <select id="amorphous-urate" name="amorphous-urate" >
+                                <option value="" disabled selected>Select</option>
+                                <option value="few">Few</option>
+                                <option value="rare">Rare</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="many">Many</option>
+                                <option value="TNTC">TNTC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rbc">RBC:</label>
+                              <select id="rbc" name="rbc" >
+                                <option value="" disabled selected>Select</option>
+                                 <option value="0-2">0-2</option>
+                                  <option value="5-10">5-10</option>
+                                   <option value="10-20">10-20</option>
+                                    <option value="20-30">20-30</option>
+                                     <option value="TNTC">TNTC</option>
+                                  </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wbc">WBC:</label>
+                              <select id="wbc" name="wbc" >
+
+                                <option value="" disabled selected>Select</option>
+
+                                 <option value="0-2">0-2</option>
+
+                                  <option value="5-10">5-10</option>
+
+                                   <option value="10-20">10-20</option>
+
+                                    <option value="20-30">20-30</option>
+
+                                     <option value="TNTC">TNTC</option>
+
+                                  </select>
+                        </div>
+                    </div>         
+                    <div class="submit-container">
+                        <button type="submit" class="submit-button">Submit</button>
+                    </div>
+                </form>
+                    </div> 
+                <br>
+            
+        </div>
+    
+    </main>
+</body>
+</html>
+
+
